@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { Thought } = require('../../models');
+const Thought = require('../../models/Thought');
+
 
 // Add CRUD routes for Thought here (Create, Read, Update, Delete)
 

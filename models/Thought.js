@@ -1,10 +1,23 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types } = require('mongoose'); // Ensure you have Types
 const reactionSchema = require('./Reaction');
 
 const thoughtSchema = new Schema(
   {
-    // Add fields as described in the project details
-    // ...
+    thoughtText: {
+      type: String,
+      required: true,
+      minlength: 1,
+      maxlength: 280
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      get: (timestamp) => dateFormat(timestamp) // Format timestamp using a function you'd need to define (or use a library for)
+    },
+    username: {
+      type: String,
+      required: true
+    },
     reactions: [reactionSchema]
   }
 );

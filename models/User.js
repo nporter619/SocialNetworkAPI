@@ -1,9 +1,19 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 
 const userSchema = new Schema(
   {
-    // Add fields as described in the project details
-    // ...
+    username: {
+      type: String,
+      unique: true,
+      required: true,
+      trim: true
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      match: [/.+@.+\..+/, 'Must use a valid email address']
+    },
     thoughts: [
       {
         type: Schema.Types.ObjectId,
